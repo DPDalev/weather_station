@@ -1,0 +1,26 @@
+body {
+    background-color: #d3d3d3;
+    font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+#container {
+    /* position: absolute; */
+    font-size: 40px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    margin-top: 10%;
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+form {
+    position: relative;
+    margin: 0 auto;
+}
+
+#weatherContainer {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
