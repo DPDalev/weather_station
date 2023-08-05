@@ -15,9 +15,9 @@ async function getWeather() {
         // const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLong}&appid=${key}&units=metric`)//
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=metric`)
         const weatherData = await response.json();
-        console.log(weatherData)
-        console.log(weatherData.weather[0].icon)
-        console.log("CITY", weatherData.name)
+        // console.log(weatherData)
+        // console.log(weatherData.weather[0].icon)
+        // console.log("CITY", weatherData.name)
 
         document.querySelector("#cityName").innerHTML = weatherData.name + ", " + weatherData.sys.country
         document.querySelector("#temperature").innerHTML = "Temperature: " + Math.round(weatherData.main.temp) + "°C"
