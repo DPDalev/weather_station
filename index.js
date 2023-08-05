@@ -19,9 +19,23 @@ async function getWeather() {
         console.log(weatherData.weather[0].icon)
         console.log("CITY", weatherData.name)
 
-        document.querySelector("#cityName").innerHTML = weatherData.name
-        document.querySelector("#temperature").innerHTML = Math.round(weatherData.main.temp)
-        document.querySelector("#clouds").innerHTML = weatherData.weather[0].description
+        document.querySelector("#cityName").innerHTML = weatherData.name + ", " + weatherData.sys.country
+        document.querySelector("#temperature").innerHTML = "Temperature: " + Math.round(weatherData.main.temp) + "°C"
+        document.querySelector("#feelsLike").innerHTML = "Feels like: " + Math.round(weatherData.main.feels_like) + "°C"
+        
+        let weatherDesc = weatherData.weather[0].description;
+        let weatherDescContainer = document.querySelector("#weatherDesc")
+        let cloudPercentage = ", " + weatherData.clouds.all + "%"
+        if (weatherDesc == "clear sky") {
+            console.log(weatherDescContainer)
+            cloudPercentage = ""
+        }
+        
+        weatherDescContainer.innerHTML = weatherDesc.charAt(0).toUpperCase() + weatherDesc.slice(1) + cloudPercentage
+        document.querySelector("#ic").src = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
+        document.querySelector("#humidity").innerHTML = "Humidity: " + weatherData.main.humidity + "%"
+        document.querySelector("#clouds").innerHTML = "Clouds: " + weatherData.clouds.all + "%"
+
 
         document.querySelector("#error").innerHTML = "";
         

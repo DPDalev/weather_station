@@ -1,11 +1,14 @@
 body {
     background-color: #d3d3d3;
-    font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    /* font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif; */
+    /* font-family: Verdana, sans-serif; */
+    font-family: 'Lucida Grande';
+
 }
 
 #container {
     /* position: absolute; */
-    font-size: 40px;
+    font-size: 30px;
     background-color: #ffffff;
     margin: 0 auto;
     margin-top: 10%;
@@ -20,7 +23,12 @@ form {
 }
 
 #weatherContainer {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-items: center;
+    justify-items: center; */
+}
+
+#ic {
+    width: 100px;
+    height: 100px;
 }

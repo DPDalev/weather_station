@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMDB</title>
+    <title>Weather Station</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,14 +13,19 @@
             <input id="enterCity" type="input" placeholder="Enter city">
             <input id="sendCity" type="submit" value="Get weather">
         </form>
+        <div id="cityName"></div>
         <div id="weatherContainer">
-            <div id="cityName"></div>
             <div id="weather">
-                <div id="icon">
-
-                </div>
+                <div id="weatherDesc"></div>
+                    <img id="ic" src="http://openweathermap.org/img/wn/10d@2x.png" width="50" height="50">
+                
                 <div id="clouds"></div>
                 <div id="temperature"></div>
+                <div id="feelsLike"></div>
+
+                <div id="humidity">Humidity: </div>
+                <div id="clouds"></div>
+
             </div>
         </div>
         <div id="error"></div>
