@@ -32,7 +32,6 @@ async function getWeather() {
         // console.log("CITY", weatherData.name)
 
         cityNameContainer.innerHTML = weatherData.name + ", " + weatherData.sys.country
-
         document.querySelector("#temperature").innerHTML = Math.round(weatherData.main.temp  * 10) / 10 + "°C"
         document.querySelector("#feelsLike").children[1].innerHTML = Math.round(weatherData.main.feels_like * 10) / 10 + "°C"
         document.querySelector("#humidity").children[1].innerHTML = weatherData.main.humidity + "%"
