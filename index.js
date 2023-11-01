@@ -8,10 +8,11 @@ document.querySelector("#submitCity").addEventListener("click", (event) => {
     cityName = document.querySelector("#enterCity").value
 
     if (cityName === "") {
-        cityNameContainer.innerHTML = "Please enter city name";
-        cityNameContainer.classList.add("cityNotEntered");
+        noCity("Please enter city name")
+        // cityNameContainer.innerHTML = "Please enter city name";
+        // cityNameContainer.classList.add("cityNotEntered");
 
-        document.getElementById("weather").style.display = "none";
+        // document.getElementById("weather").style.display = "none";
     } else {
         getWeather()
     }
@@ -56,14 +57,18 @@ async function getWeather() {
         document.querySelector("#error").innerHTML = "";
         
     } catch(error) {
-        document.querySelector("#error").innerHTML = error.message;
-        document.querySelector("#error").style.display = "block";
-        document.querySelector("#weatherContainer").style.display = "none";
+        noCity("City not found");
+        // document.querySelector("#error").innerHTML = error.message;
+        // document.querySelector("#error").style.display = "block";
+        // document.querySelector("#weatherContainer").style.display = "none";
 
-        console.log(error.message)
+        // console.log("Error: ", error.message)
     }
-
-connectToAPI = () => {
 }
 
+function noCity(message) {
+    cityNameContainer.innerHTML = message;
+    cityNameContainer.classList.add("cityNotEntered");
+
+    document.getElementById("weather").style.display = "none";
 }
