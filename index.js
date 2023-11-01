@@ -1,27 +1,41 @@
 const key = '3a4ed4eecd82ee61fabfffa724a98c84';
 
 let cityName;
+const cityNameContainer = document.getElementById("cityName");
 
-document.querySelector("#sendCity").addEventListener("click", (event) => {
+document.querySelector("#submitCity").addEventListener("click", (event) => {
     event.preventDefault();
     cityName = document.querySelector("#enterCity").value
 
-    getWeather()
+    if (cityName === "") {
+        cityNameContainer.innerHTML = "Please enter city name";
+        cityNameContainer.classList.add("cityNotEntered");
+
+        document.getElementById("weather").style.display = "none";
+    } else {
+        getWeather()
+    }
 });
 
 async function getWeather() {
     try {
-        document.querySelector("#cityName").innerHTML = cityName
+        cityNameContainer.classList.remove("cityNotEntered");
+        cityNameContainer.innerHTML = cityName;
+        document.getElementById("weather").style.display = "block";
+
         // const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${currentLat}&lon=${currentLong}&appid=${key}&units=metric`)//
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=metric`)
         const weatherData = await response.json();
-        // console.log(weatherData)
+        console.log(weatherData)
         // console.log(weatherData.weather[0].icon)
         // console.log("CITY", weatherData.name)
 
-        document.querySelector("#cityName").innerHTML = weatherData.name + ", " + weatherData.sys.country
-        document.querySelector("#temperature").innerHTML = "Temperature: " + Math.round(weatherData.main.temp) + "°C"
-        document.querySelector("#feelsLike").innerHTML = "Feels like: " + Math.round(weatherData.main.feels_like) + "°C"
+        cityNameContainer.innerHTML = weatherData.name + ", " + weatherData.sys.country
+
+        document.querySelector("#temperature").innerHTML = Math.round(weatherData.main.temp  * 10) / 10 + "°C"
+        document.querySelector("#feelsLike").children[1].innerHTML = Math.round(weatherData.main.feels_like * 10) / 10 + "°C"
+        document.querySelector("#humidity").children[1].innerHTML = weatherData.main.humidity + "%"
+        document.querySelector("#wind").children[1].innerHTML = Math.round(weatherData.wind.speed  * 10) / 10 + "m/s , " + weatherData.wind.deg + "°"
         
         let weatherDesc = weatherData.weather[0].description;
         let weatherDescContainer = document.querySelector("#weatherDesc")
@@ -30,11 +44,13 @@ async function getWeather() {
             console.log(weatherDescContainer)
             cloudPercentage = ""
         }
+
+        let windDirection = ""
         
         weatherDescContainer.innerHTML = weatherDesc.charAt(0).toUpperCase() + weatherDesc.slice(1) + cloudPercentage
         document.querySelector("#ic").src = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
-        document.querySelector("#humidity").innerHTML = "Humidity: " + weatherData.main.humidity + "%"
-        document.querySelector("#clouds").innerHTML = "Clouds: " + weatherData.clouds.all + "%"
+        // document.querySelector("#clouds").innerHTML = "Clouds: " + weatherData.clouds.all + "%"
+
 
 
         document.querySelector("#error").innerHTML = "";

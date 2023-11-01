@@ -9,25 +9,34 @@
 </head>
 <body>
     <div id="container">
-        <form>
-            <input id="enterCity" type="input" placeholder="Enter city">
-            <input id="sendCity" type="submit" value="Get weather">
+        <form id="form">
+            <input id="enterCity" class="form" type="input" placeholder="Enter city">
+            <input id="submitCity" class="form" type="submit" value="Get weather">
         </form>
         <div id="cityName"></div>
-        <div id="weatherContainer">
             <div id="weather">
                 <div id="weatherDesc"></div>
-                    <img id="ic" src="http://openweathermap.org/img/wn/10d@2x.png" width="50" height="50">
-                
-                <div id="clouds"></div>
+                <img id="ic" src="http://openweathermap.org/img/wn/10d@2x.png" width="50" height="50">
                 <div id="temperature"></div>
-                <div id="feelsLike"></div>
-
-                <div id="humidity">Humidity: </div>
-                <div id="clouds"></div>
+                <div id="descriptions">
+                    <div id="feelsLike" class="descContainer">
+                        <div class="label">Feels like</div>
+                        <div class="value"></div>
+                    </div>
+                    
+                    <div id="humidity" class="descContainer">
+                        <div class="label">Humidity</div>
+                        <div class="value"></div>
+                    </div>
+                    
+                    <div id="wind" class="descContainer">
+                        <div class="label">Wind</div>
+                        <div class="value"></div>
+                    </div>
+                    
+                </div>
 
             </div>
-        </div>
         <div id="error"></div>
     </div>
     <script src="index.js"></script>
